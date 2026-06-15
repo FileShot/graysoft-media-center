@@ -1,0 +1,37 @@
+[package]
+name = "graysoft-media-center"
+version = "0.1.0"
+description = "Graysoft Media Center - AI media generation interface"
+authors = ["Graysoft"]
+edition = "2021"
+
+[lib]
+name = "graysoft_media_center_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["protocol-asset"] }
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+tauri-plugin-opener = "2"
+tauri-plugin-updater = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+pyo3 = { version = "0.23", features = ["auto-initialize"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+dirs = "6"
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "webp"] }
+base64 = "0.22"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true

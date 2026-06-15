@@ -1,0 +1,92 @@
+{
+  "models": [
+    {
+      "id": "flux-schnell",
+      "name": "Flux Schnell",
+      "type": "image",
+      "description": "Fast Flux image generation",
+      "hfRepo": "black-forest-labs/FLUX.1-schnell",
+      "schema": "flux-schnell.json",
+      "pipelineModule": "flux_schnell",
+      "minVramGb": 6,
+      "capabilities": ["text2img"]
+    },
+    {
+      "id": "flux-dev",
+      "name": "Flux Dev",
+      "type": "image",
+      "description": "High quality Flux development model",
+      "hfRepo": "black-forest-labs/FLUX.1-dev",
+      "schema": "flux-dev.json",
+      "pipelineModule": "flux_dev",
+      "minVramGb": 8,
+      "capabilities": ["text2img"]
+    },
+    {
+      "id": "z-image-turbo",
+      "name": "Z-Image Turbo",
+      "type": "image",
+      "description": "Turbo image generation",
+      "hfRepo": "stabilityai/sdxl-turbo",
+      "schema": "z-image-turbo.json",
+      "pipelineModule": "z_image_turbo",
+      "minVramGb": 8,
+      "capabilities": ["text2img"]
+    },
+    {
+      "id": "sdxl-base",
+      "name": "SDXL Base",
+      "type": "image",
+      "description": "Stable Diffusion XL base model",
+      "hfRepo": "stabilityai/stable-diffusion-xl-base-1.0",
+      "schema": "sdxl-base.json",
+      "pipelineModule": "sdxl_base",
+      "minVramGb": 6,
+      "capabilities": ["text2img", "img2img"]
+    },
+    {
+      "id": "wan-2.2-5b",
+      "name": "WAN 2.2 5B (recommended)",
+      "type": "video",
+      "description": "Single GGUF file, works on 4GB GPUs with fast preset",
+      "hfRepo": "Wan-AI/Wan2.2-TI2V-5B-Diffusers",
+      "schema": "wan-2.2-5b.json",
+      "pipelineModule": "wan_2_1",
+      "minVramGb": 4,
+      "capabilities": ["text2video", "ti2v"]
+    },
+    {
+      "id": "wan-2.2",
+      "name": "WAN 2.2 A14B (advanced)",
+      "type": "video",
+      "description": "Requires two GGUF files (HighNoise + LowNoise)",
+      "hfRepo": "Wan-AI/Wan2.2-T2V-A14B-Diffusers",
+      "schema": "wan-2.2.json",
+      "pipelineModule": "wan_2_1",
+      "minVramGb": 12,
+      "capabilities": ["text2video"]
+    },
+    {
+      "id": "wan-2.1",
+      "name": "WAN 2.1",
+      "type": "video",
+      "description": "Alibaba WAN video generation",
+      "hfRepo": "Wan-AI/Wan2.1-T2V-1.3B",
+      "schema": "wan-2.1.json",
+      "pipelineModule": "wan_2_1",
+      "minVramGb": 6,
+      "capabilities": ["text2video"]
+    },
+    {
+      "id": "ltx-video-2",
+      "name": "LTX-Video 2",
+      "type": "video",
+      "description": "Lightricks LTX video generation",
+      "hfRepo": "Lightricks/LTX-Video",
+      "schema": "ltx-video-2.json",
+      "pipelineModule": "ltx_video_2",
+      "minVramGb": 10,
+      "capabilities": ["text2video"]
+    }
+  ]
+}

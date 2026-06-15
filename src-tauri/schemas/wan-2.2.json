@@ -1,0 +1,124 @@
+{
+  "id": "wan-2.2",
+  "name": "WAN 2.2",
+  "mediaType": "video",
+  "groups": [
+    {
+      "id": "prompt",
+      "label": "Prompt",
+      "fields": [
+        {
+          "id": "prompt",
+          "label": "Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "2", "input": "text" }]
+        },
+        {
+          "id": "negative_prompt",
+          "label": "Negative Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "3", "input": "text" }]
+        }
+      ]
+    },
+    {
+      "id": "dimensions",
+      "label": "Dimensions",
+      "fields": [
+        {
+          "id": "width",
+          "label": "Width",
+          "type": "number",
+          "default": 832,
+          "min": 480,
+          "max": 1280,
+          "step": 16,
+          "bindings": [{ "nodeId": "4", "input": "width", "transform": "int" }]
+        },
+        {
+          "id": "height",
+          "label": "Height",
+          "type": "number",
+          "default": 480,
+          "min": 480,
+          "max": 720,
+          "step": 16,
+          "bindings": [{ "nodeId": "4", "input": "height", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "label": "Video",
+      "fields": [
+        {
+          "id": "duration",
+          "label": "Duration (seconds)",
+          "type": "slider",
+          "default": 5,
+          "min": 1,
+          "max": 10,
+          "step": 0.5,
+          "bindings": []
+        },
+        {
+          "id": "fps",
+          "label": "FPS",
+          "type": "select",
+          "default": 16,
+          "options": [
+            { "label": "16 fps", "value": 16 },
+            { "label": "24 fps", "value": 24 },
+            { "label": "30 fps", "value": 30 }
+          ],
+          "bindings": [{ "nodeId": "5", "input": "frame_rate", "transform": "int" }]
+        },
+        {
+          "id": "frame_count",
+          "label": "Frame Count",
+          "type": "number",
+          "default": 81,
+          "min": 16,
+          "max": 120,
+          "step": 1,
+          "bindings": [{ "nodeId": "4", "input": "frame_count", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality",
+      "fields": [
+        {
+          "id": "steps",
+          "label": "Steps",
+          "type": "slider",
+          "default": 30,
+          "min": 10,
+          "max": 50,
+          "step": 1,
+          "bindings": [{ "nodeId": "4", "input": "steps", "transform": "int" }]
+        },
+        {
+          "id": "cfg",
+          "label": "CFG Scale",
+          "type": "slider",
+          "default": 6.0,
+          "min": 1.0,
+          "max": 12.0,
+          "step": 0.5,
+          "bindings": [{ "nodeId": "4", "input": "cfg" }]
+        },
+        {
+          "id": "seed",
+          "label": "Seed",
+          "type": "seed",
+          "default": -1,
+          "bindings": [{ "nodeId": "4", "input": "seed", "transform": "seed" }]
+        }
+      ]
+    }
+  ]
+}

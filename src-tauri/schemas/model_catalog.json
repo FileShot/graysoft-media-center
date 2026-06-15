@@ -1,0 +1,188 @@
+{
+  "entries": [
+    {
+      "id": "wan-22-5b-video",
+      "name": "WAN 2.2 Video",
+      "mediaType": "video",
+      "schemaId": "wan-2.2-5b",
+      "description": "Best starter for 4GB GPUs. One GGUF file, strong motion and quality.",
+      "sizeGb": 3.1,
+      "vramGb": 4,
+      "minVramGb": 4,
+      "recommended": true,
+      "tags": ["video", "gguf", "wan"],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "QuantStack/Wan2.2-TI2V-5B-GGUF",
+      "ggufFile": "Wan2.2-TI2V-5B-Q4_K_S.gguf",
+      "componentsRepo": "Wan-AI/Wan2.2-TI2V-5B-Diffusers",
+      "quantVariants": [
+        {
+          "id": "q4",
+          "ggufFile": "Wan2.2-TI2V-5B-Q4_K_S.gguf",
+          "sizeGb": 3.1,
+          "vramGb": 4,
+          "label": "Q4 (4GB)"
+        },
+        {
+          "id": "q5",
+          "ggufFile": "Wan2.2-TI2V-5B-Q5_K_M.gguf",
+          "sizeGb": 3.8,
+          "vramGb": 6,
+          "label": "Q5 (6GB)"
+        }
+      ]
+    },
+    {
+      "id": "wan-21-13b-video",
+      "name": "WAN 2.1 1.3B",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "Lightweight text-to-video. Smaller download, good for testing.",
+      "sizeGb": 5.0,
+      "vramGb": 6,
+      "minVramGb": 6,
+      "recommended": false,
+      "tags": ["video", "diffusers", "wan"],
+      "downloadType": "diffusers",
+      "hfRepo": "Wan-AI/Wan2.1-T2V-1.3B"
+    },
+    {
+      "id": "ltx-video-2b",
+      "name": "LTX Video 2B",
+      "mediaType": "video",
+      "schemaId": "ltx-video-2",
+      "description": "Fast video generation from Lightricks.",
+      "sizeGb": 8.0,
+      "vramGb": 10,
+      "minVramGb": 10,
+      "recommended": false,
+      "tags": ["video", "diffusers"],
+      "downloadType": "diffusers",
+      "hfRepo": "Lightricks/LTX-Video"
+    },
+    {
+      "id": "flux-schnell-gguf",
+      "name": "Flux Schnell",
+      "mediaType": "image",
+      "schemaId": "flux-schnell",
+      "description": "Fastest Flux images. Great for quick drafts.",
+      "sizeGb": 6.5,
+      "vramGb": 6,
+      "minVramGb": 6,
+      "recommended": true,
+      "tags": ["image", "gguf", "flux"],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "city96/FLUX.1-schnell-gguf",
+      "ggufFile": "flux1-schnell-Q4_K_S.gguf",
+      "componentsRepo": "black-forest-labs/FLUX.1-schnell",
+      "quantVariants": [
+        {
+          "id": "q4",
+          "ggufFile": "flux1-schnell-Q4_K_S.gguf",
+          "sizeGb": 6.5,
+          "vramGb": 6,
+          "label": "Q4 (6GB)"
+        },
+        {
+          "id": "q5",
+          "ggufFile": "flux1-schnell-Q5_K_S.gguf",
+          "sizeGb": 8.0,
+          "vramGb": 8,
+          "label": "Q5 (8GB)"
+        }
+      ]
+    },
+    {
+      "id": "flux-dev-gguf",
+      "name": "Flux Dev",
+      "mediaType": "image",
+      "schemaId": "flux-dev",
+      "description": "Higher quality Flux. Top tier open image model.",
+      "sizeGb": 6.8,
+      "vramGb": 8,
+      "minVramGb": 8,
+      "recommended": true,
+      "tags": ["image", "gguf", "flux"],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "city96/FLUX.1-dev-gguf",
+      "ggufFile": "flux1-dev-Q4_K_S.gguf",
+      "componentsRepo": "black-forest-labs/FLUX.1-dev",
+      "quantVariants": [
+        {
+          "id": "q4",
+          "ggufFile": "flux1-dev-Q4_K_S.gguf",
+          "sizeGb": 6.8,
+          "vramGb": 8,
+          "label": "Q4 (8GB)"
+        },
+        {
+          "id": "q5",
+          "ggufFile": "flux1-dev-Q5_K_S.gguf",
+          "sizeGb": 8.3,
+          "vramGb": 10,
+          "label": "Q5 (10GB)"
+        }
+      ]
+    },
+    {
+      "id": "sdxl-base-gguf",
+      "name": "SDXL Base",
+      "mediaType": "image",
+      "schemaId": "sdxl-base",
+      "description": "Classic Stable Diffusion XL in GGUF format.",
+      "sizeGb": 1.5,
+      "vramGb": 6,
+      "minVramGb": 6,
+      "recommended": true,
+      "tags": ["image", "gguf", "sdxl"],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "HyperX-Sentience/SDXL-GGUF",
+      "ggufFile": "sdxl_base_1.0_Q4_K_S.gguf",
+      "componentsRepo": "stabilityai/stable-diffusion-xl-base-1.0",
+      "quantVariants": [
+        {
+          "id": "q4",
+          "ggufFile": "sdxl_base_1.0_Q4_K_S.gguf",
+          "sizeGb": 1.5,
+          "vramGb": 6,
+          "label": "Q4 (6GB)"
+        },
+        {
+          "id": "q5",
+          "ggufFile": "sd_xl_base_1.0_Q5_K_S.gguf",
+          "sizeGb": 1.8,
+          "vramGb": 8,
+          "label": "Q5 (8GB)"
+        }
+      ]
+    },
+    {
+      "id": "sdxl-turbo",
+      "name": "SDXL Turbo",
+      "mediaType": "image",
+      "schemaId": "z-image-turbo",
+      "description": "Ultra-fast SDXL turbo. Great for quick drafts.",
+      "sizeGb": 7.0,
+      "vramGb": 8,
+      "minVramGb": 8,
+      "recommended": false,
+      "tags": ["image", "diffusers", "sdxl"],
+      "downloadType": "diffusers",
+      "hfRepo": "stabilityai/sdxl-turbo"
+    },
+    {
+      "id": "sdxl-base-full",
+      "name": "SDXL Base (full)",
+      "mediaType": "image",
+      "schemaId": "sdxl-base",
+      "description": "Full diffusers folder — best compatibility.",
+      "sizeGb": 7.0,
+      "vramGb": 10,
+      "minVramGb": 10,
+      "recommended": false,
+      "tags": ["image", "diffusers", "sdxl"],
+      "downloadType": "diffusers",
+      "hfRepo": "stabilityai/stable-diffusion-xl-base-1.0"
+    }
+  ]
+}

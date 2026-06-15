@@ -1,0 +1,127 @@
+{
+  "id": "z-image-turbo",
+  "name": "Z-Image Turbo",
+  "mediaType": "image",
+  "groups": [
+    {
+      "id": "prompt",
+      "label": "Prompt",
+      "fields": [
+        {
+          "id": "prompt",
+          "label": "Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "6", "input": "text" }]
+        },
+        {
+          "id": "negative_prompt",
+          "label": "Negative Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "7", "input": "text" }]
+        }
+      ]
+    },
+    {
+      "id": "dimensions",
+      "label": "Dimensions",
+      "fields": [
+        {
+          "id": "width",
+          "label": "Width",
+          "type": "number",
+          "default": 1024,
+          "min": 512,
+          "max": 1536,
+          "step": 64,
+          "bindings": [{ "nodeId": "5", "input": "width", "transform": "int" }]
+        },
+        {
+          "id": "height",
+          "label": "Height",
+          "type": "number",
+          "default": 1024,
+          "min": 512,
+          "max": 1536,
+          "step": 64,
+          "bindings": [{ "nodeId": "5", "input": "height", "transform": "int" }]
+        },
+        {
+          "id": "batch_size",
+          "label": "Batch Size",
+          "type": "slider",
+          "default": 1,
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "bindings": [{ "nodeId": "5", "input": "batch_size", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality",
+      "fields": [
+        {
+          "id": "steps",
+          "label": "Steps",
+          "type": "slider",
+          "default": 8,
+          "min": 4,
+          "max": 16,
+          "step": 1,
+          "bindings": [{ "nodeId": "3", "input": "steps", "transform": "int" }]
+        },
+        {
+          "id": "cfg",
+          "label": "CFG Scale",
+          "type": "slider",
+          "default": 1.5,
+          "min": 1.0,
+          "max": 5.0,
+          "step": 0.1,
+          "bindings": [{ "nodeId": "3", "input": "cfg" }]
+        },
+        {
+          "id": "seed",
+          "label": "Seed",
+          "type": "seed",
+          "default": -1,
+          "bindings": [{ "nodeId": "3", "input": "seed", "transform": "seed" }]
+        },
+        {
+          "id": "turbo_mode",
+          "label": "Turbo Mode",
+          "type": "toggle",
+          "default": true,
+          "bindings": []
+        },
+        {
+          "id": "sampler_name",
+          "label": "Sampler",
+          "type": "select",
+          "default": "euler",
+          "options": [
+            { "label": "Euler", "value": "euler" },
+            { "label": "DPM++ 2M", "value": "dpmpp_2m" }
+          ],
+          "bindings": [{ "nodeId": "3", "input": "sampler_name", "transform": "string" }]
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "label": "Advanced",
+      "fields": [
+        {
+          "id": "ckpt_name",
+          "label": "Checkpoint",
+          "type": "text",
+          "default": "z-image-turbo.safetensors",
+          "bindings": [{ "nodeId": "4", "input": "ckpt_name", "transform": "string" }]
+        }
+      ]
+    }
+  ]
+}

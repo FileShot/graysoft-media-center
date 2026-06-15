@@ -1,0 +1,160 @@
+{
+  "id": "flux-dev",
+  "name": "Flux Dev",
+  "mediaType": "image",
+  "groups": [
+    {
+      "id": "prompt",
+      "label": "Prompt",
+      "fields": [
+        {
+          "id": "prompt",
+          "label": "Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "6", "input": "text" }]
+        },
+        {
+          "id": "negative_prompt",
+          "label": "Negative Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "7", "input": "text" }]
+        }
+      ]
+    },
+    {
+      "id": "dimensions",
+      "label": "Dimensions",
+      "fields": [
+        {
+          "id": "width",
+          "label": "Width",
+          "type": "number",
+          "default": 1024,
+          "min": 256,
+          "max": 2048,
+          "step": 64,
+          "bindings": [{ "nodeId": "19", "input": "width", "transform": "int" }]
+        },
+        {
+          "id": "height",
+          "label": "Height",
+          "type": "number",
+          "default": 1024,
+          "min": 256,
+          "max": 2048,
+          "step": 64,
+          "bindings": [{ "nodeId": "19", "input": "height", "transform": "int" }]
+        },
+        {
+          "id": "batch_size",
+          "label": "Batch Size",
+          "type": "slider",
+          "default": 1,
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "bindings": [{ "nodeId": "19", "input": "batch_size", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality",
+      "fields": [
+        {
+          "id": "steps",
+          "label": "Steps",
+          "type": "slider",
+          "default": 20,
+          "min": 10,
+          "max": 50,
+          "step": 1,
+          "bindings": [{ "nodeId": "3", "input": "steps", "transform": "int" }]
+        },
+        {
+          "id": "cfg",
+          "label": "CFG Scale",
+          "type": "slider",
+          "default": 3.5,
+          "min": 1.0,
+          "max": 10.0,
+          "step": 0.1,
+          "bindings": [{ "nodeId": "3", "input": "cfg" }]
+        },
+        {
+          "id": "seed",
+          "label": "Seed",
+          "type": "seed",
+          "default": -1,
+          "bindings": [{ "nodeId": "3", "input": "seed", "transform": "seed" }]
+        },
+        {
+          "id": "sampler_name",
+          "label": "Sampler",
+          "type": "select",
+          "default": "euler",
+          "options": [
+            { "label": "Euler", "value": "euler" },
+            { "label": "DPM++ 2M", "value": "dpmpp_2m" },
+            { "label": "DPM++ SDE", "value": "dpmpp_sde" }
+          ],
+          "bindings": [{ "nodeId": "3", "input": "sampler_name", "transform": "string" }]
+        },
+        {
+          "id": "scheduler",
+          "label": "Scheduler",
+          "type": "select",
+          "default": "normal",
+          "options": [
+            { "label": "Normal", "value": "normal" },
+            { "label": "Karras", "value": "karras" },
+            { "label": "Simple", "value": "simple" }
+          ],
+          "bindings": [{ "nodeId": "3", "input": "scheduler", "transform": "string" }]
+        },
+        {
+          "id": "clip_skip",
+          "label": "CLIP Skip",
+          "type": "slider",
+          "default": 1,
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "bindings": []
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "label": "Advanced",
+      "fields": [
+        {
+          "id": "unet_name",
+          "label": "UNET Model",
+          "type": "text",
+          "default": "flux1-dev.safetensors",
+          "bindings": [{ "nodeId": "12", "input": "unet_name", "transform": "string" }]
+        },
+        {
+          "id": "use_refiner",
+          "label": "Use Refiner",
+          "type": "toggle",
+          "default": false,
+          "bindings": []
+        },
+        {
+          "id": "denoise",
+          "label": "Denoise",
+          "type": "slider",
+          "default": 1.0,
+          "min": 0.1,
+          "max": 1.0,
+          "step": 0.05,
+          "bindings": [{ "nodeId": "3", "input": "denoise" }]
+        }
+      ]
+    }
+  ]
+}

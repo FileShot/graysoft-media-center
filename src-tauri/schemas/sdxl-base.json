@@ -1,0 +1,182 @@
+{
+  "id": "sdxl-base",
+  "name": "SDXL Base",
+  "mediaType": "image",
+  "groups": [
+    {
+      "id": "prompt",
+      "label": "Prompt",
+      "fields": [
+        {
+          "id": "prompt",
+          "label": "Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "6", "input": "text" }]
+        },
+        {
+          "id": "negative_prompt",
+          "label": "Negative Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "7", "input": "text" }]
+        }
+      ]
+    },
+    {
+      "id": "dimensions",
+      "label": "Dimensions",
+      "fields": [
+        {
+          "id": "width",
+          "label": "Width",
+          "type": "number",
+          "default": 1024,
+          "min": 512,
+          "max": 1536,
+          "step": 64,
+          "bindings": [{ "nodeId": "5", "input": "width", "transform": "int" }]
+        },
+        {
+          "id": "height",
+          "label": "Height",
+          "type": "number",
+          "default": 1024,
+          "min": 512,
+          "max": 1536,
+          "step": 64,
+          "bindings": [{ "nodeId": "5", "input": "height", "transform": "int" }]
+        },
+        {
+          "id": "batch_size",
+          "label": "Batch Size",
+          "type": "slider",
+          "default": 1,
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "bindings": [{ "nodeId": "5", "input": "batch_size", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "img2img",
+      "label": "Image-to-Image",
+      "fields": [
+        {
+          "id": "init_image",
+          "label": "Source Image",
+          "type": "file",
+          "default": "",
+          "bindings": [{ "input": "init_image" }]
+        },
+        {
+          "id": "strength",
+          "label": "Strength",
+          "type": "slider",
+          "default": 0.75,
+          "min": 0.1,
+          "max": 1.0,
+          "step": 0.05,
+          "bindings": [{ "input": "strength" }]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality",
+      "fields": [
+        {
+          "id": "steps",
+          "label": "Steps",
+          "type": "slider",
+          "default": 25,
+          "min": 10,
+          "max": 60,
+          "step": 1,
+          "bindings": [{ "nodeId": "3", "input": "steps", "transform": "int" }]
+        },
+        {
+          "id": "cfg",
+          "label": "CFG Scale",
+          "type": "slider",
+          "default": 7.0,
+          "min": 1.0,
+          "max": 15.0,
+          "step": 0.5,
+          "bindings": [{ "nodeId": "3", "input": "cfg" }]
+        },
+        {
+          "id": "seed",
+          "label": "Seed",
+          "type": "seed",
+          "default": -1,
+          "bindings": [{ "nodeId": "3", "input": "seed", "transform": "seed" }]
+        },
+        {
+          "id": "sampler_name",
+          "label": "Sampler",
+          "type": "select",
+          "default": "dpmpp_2m",
+          "options": [
+            { "label": "DPM++ 2M", "value": "dpmpp_2m" },
+            { "label": "Euler", "value": "euler" },
+            { "label": "DPM++ SDE", "value": "dpmpp_sde" }
+          ],
+          "bindings": [{ "nodeId": "3", "input": "sampler_name", "transform": "string" }]
+        },
+        {
+          "id": "scheduler",
+          "label": "Scheduler",
+          "type": "select",
+          "default": "karras",
+          "options": [
+            { "label": "Karras", "value": "karras" },
+            { "label": "Normal", "value": "normal" },
+            { "label": "Exponential", "value": "exponential" }
+          ],
+          "bindings": [{ "nodeId": "3", "input": "scheduler", "transform": "string" }]
+        },
+        {
+          "id": "use_refiner",
+          "label": "Use Refiner",
+          "type": "toggle",
+          "default": false,
+          "bindings": []
+        },
+        {
+          "id": "refiner_strength",
+          "label": "Refiner Denoise",
+          "type": "slider",
+          "default": 0.35,
+          "min": 0.1,
+          "max": 0.8,
+          "step": 0.05,
+          "visibleWhen": { "field": "use_refiner", "equals": true },
+          "bindings": [{ "nodeId": "10", "input": "denoise" }]
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "label": "Advanced",
+      "fields": [
+        {
+          "id": "ckpt_name",
+          "label": "Base Checkpoint",
+          "type": "text",
+          "default": "sd_xl_base_1.0.safetensors",
+          "bindings": [{ "nodeId": "4", "input": "ckpt_name", "transform": "string" }]
+        },
+        {
+          "id": "refiner_ckpt",
+          "label": "Refiner Checkpoint",
+          "type": "text",
+          "default": "sd_xl_refiner_1.0.safetensors",
+          "visibleWhen": { "field": "use_refiner", "equals": true },
+          "bindings": [{ "nodeId": "11", "input": "ckpt_name", "transform": "string" }]
+        }
+      ]
+    }
+  ]
+}

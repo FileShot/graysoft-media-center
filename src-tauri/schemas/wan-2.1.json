@@ -1,0 +1,169 @@
+{
+  "id": "wan-2.1",
+  "name": "WAN 2.1",
+  "mediaType": "video",
+  "groups": [
+    {
+      "id": "prompt",
+      "label": "Prompt",
+      "fields": [
+        {
+          "id": "prompt",
+          "label": "Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "2", "input": "text" }]
+        },
+        {
+          "id": "negative_prompt",
+          "label": "Negative Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "nodeId": "3", "input": "text" }]
+        }
+      ]
+    },
+    {
+      "id": "dimensions",
+      "label": "Dimensions",
+      "fields": [
+        {
+          "id": "width",
+          "label": "Width",
+          "type": "number",
+          "default": 832,
+          "min": 480,
+          "max": 1280,
+          "step": 16,
+          "bindings": [{ "nodeId": "4", "input": "width", "transform": "int" }]
+        },
+        {
+          "id": "height",
+          "label": "Height",
+          "type": "number",
+          "default": 480,
+          "min": 480,
+          "max": 720,
+          "step": 16,
+          "bindings": [{ "nodeId": "4", "input": "height", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "label": "Video",
+      "fields": [
+        {
+          "id": "duration",
+          "label": "Duration (seconds)",
+          "type": "slider",
+          "default": 5,
+          "min": 1,
+          "max": 10,
+          "step": 0.5,
+          "bindings": []
+        },
+        {
+          "id": "fps",
+          "label": "FPS",
+          "type": "select",
+          "default": 16,
+          "options": [
+            { "label": "16 fps", "value": 16 },
+            { "label": "24 fps", "value": 24 },
+            { "label": "30 fps", "value": 30 }
+          ],
+          "bindings": [{ "nodeId": "5", "input": "frame_rate", "transform": "int" }]
+        },
+        {
+          "id": "frame_count",
+          "label": "Frame Count",
+          "type": "number",
+          "default": 81,
+          "min": 16,
+          "max": 300,
+          "step": 1,
+          "bindings": [{ "nodeId": "4", "input": "frame_count", "transform": "int" }]
+        },
+        {
+          "id": "motion_strength",
+          "label": "Motion Strength",
+          "type": "slider",
+          "default": 1.0,
+          "min": 0.1,
+          "max": 2.0,
+          "step": 0.1,
+          "bindings": [{ "nodeId": "4", "input": "motion_strength" }]
+        },
+        {
+          "id": "flow_shift",
+          "label": "Flow Shift",
+          "type": "slider",
+          "default": 3.0,
+          "min": 1.0,
+          "max": 8.0,
+          "step": 0.5,
+          "bindings": [{ "nodeId": "4", "input": "flow_shift" }]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality",
+      "fields": [
+        {
+          "id": "steps",
+          "label": "Steps",
+          "type": "slider",
+          "default": 30,
+          "min": 10,
+          "max": 50,
+          "step": 1,
+          "bindings": [{ "nodeId": "4", "input": "steps", "transform": "int" }]
+        },
+        {
+          "id": "cfg",
+          "label": "CFG Scale",
+          "type": "slider",
+          "default": 6.0,
+          "min": 1.0,
+          "max": 12.0,
+          "step": 0.5,
+          "bindings": [{ "nodeId": "4", "input": "cfg" }]
+        },
+        {
+          "id": "seed",
+          "label": "Seed",
+          "type": "seed",
+          "default": -1,
+          "bindings": [{ "nodeId": "4", "input": "seed", "transform": "seed" }]
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "label": "Advanced",
+      "fields": [
+        {
+          "id": "model_name",
+          "label": "WAN Model",
+          "type": "text",
+          "default": "wan2.1_t2v_1.3B.safetensors",
+          "bindings": [{ "nodeId": "1", "input": "model_name", "transform": "string" }]
+        },
+        {
+          "id": "precision",
+          "label": "Precision",
+          "type": "select",
+          "default": "bf16",
+          "options": [
+            { "label": "BF16", "value": "bf16" },
+            { "label": "FP16", "value": "fp16" },
+            { "label": "FP32", "value": "fp32" }
+          ],
+          "bindings": [{ "nodeId": "1", "input": "precision", "transform": "string" }]
+        }
+      ]
+    }
+  ]
+}
