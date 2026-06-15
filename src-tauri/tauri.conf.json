@@ -35,7 +35,7 @@
   },
   "bundle": {
     "active": true,
-    "targets": ["nsis"],
+    "targets": "all",
     "createUpdaterArtifacts": false,
     "resources": {
       "python/": "python/"
@@ -66,7 +66,7 @@
     "updater": {
       "active": false,
       "endpoints": [
-        "https://github.com/graysoft/mediacenter/releases/latest/download/latest.json"
+        "https://github.com/FileShot/graysoft-media-center/releases/latest/download/latest.json"
       ],
       "dialog": true,
       "pubkey": ""
