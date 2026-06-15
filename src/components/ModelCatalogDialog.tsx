@@ -386,15 +386,13 @@ export function ModelCatalogDialog() {
 
     if (formatFilter === "gguf") {
 
-      list = list.filter((e) => e.downloadType === "gguf_bundle" || e.tags?.includes("gguf"));
+      list = list.filter((e) => e.downloadType === "gguf_bundle" || e.downloadType === "gguf_bundle_dual" || e.tags?.includes("gguf"));
 
     } else if (formatFilter === "diffusers") {
 
       list = list.filter((e) => e.downloadType === "diffusers");
 
     }
-
-    list = list.filter((e) => (e.minVramGb ?? e.vramGb) <= maxVram + 0.5);
 
     list.sort((a, b) => {
 
@@ -412,7 +410,13 @@ export function ModelCatalogDialog() {
 
     return list;
 
-  }, [entries, tab, recommendedOnly, formatFilter, maxVram, engineStatus?.vramGb]);
+  }, [entries, tab, recommendedOnly, formatFilter, engineStatus?.vramGb]);
+
+
+
+  const videoCount = useMemo(() => entries.filter((e) => e.mediaType === "video").length, [entries]);
+
+  const imageCount = useMemo(() => entries.filter((e) => e.mediaType === "image").length, [entries]);
 
 
 
@@ -576,7 +580,7 @@ export function ModelCatalogDialog() {
 
       <div
 
-        className="glass glass-panel-3d flex max-h-[85vh] w-full max-w-2xl flex-col rounded-[20px] shadow-2xl"
+        className="glass glass-panel-3d flex max-h-[85vh] w-full max-w-3xl flex-col rounded-[20px] shadow-2xl"
 
         role="dialog"
 
@@ -650,7 +654,7 @@ export function ModelCatalogDialog() {
 
               <Video size={16} />
 
-              Video
+              Video ({videoCount})
 
             </button>
 
@@ -676,7 +680,7 @@ export function ModelCatalogDialog() {
 
               <Image size={16} />
 
-              Image
+              Image ({imageCount})
 
             </button>
 
@@ -942,7 +946,7 @@ export function ModelCatalogDialog() {
 
                 <p className="text-sm text-[var(--text-muted)]">
 
-                  No models match your filters. Try raising Max VRAM.
+                  No models match your filters. Try clearing Recommended only or format filters.
 
                 </p>
 

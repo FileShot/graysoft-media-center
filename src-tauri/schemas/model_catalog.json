@@ -2,20 +2,32 @@
   "entries": [
     {
       "id": "wan-22-5b-video",
-      "name": "WAN 2.2 Video",
+      "name": "WAN 2.2 TI2V 5B",
       "mediaType": "video",
       "schemaId": "wan-2.2-5b",
-      "description": "Best starter for 4GB GPUs. One GGUF file, strong motion and quality.",
+      "description": "Best 4GB starter. Text + image-to-video in one GGUF.",
       "sizeGb": 3.1,
       "vramGb": 4,
       "minVramGb": 4,
       "recommended": true,
-      "tags": ["video", "gguf", "wan"],
+      "tags": [
+        "video",
+        "gguf",
+        "wan",
+        "ti2v"
+      ],
       "downloadType": "gguf_bundle",
       "ggufRepo": "QuantStack/Wan2.2-TI2V-5B-GGUF",
       "ggufFile": "Wan2.2-TI2V-5B-Q4_K_S.gguf",
       "componentsRepo": "Wan-AI/Wan2.2-TI2V-5B-Diffusers",
       "quantVariants": [
+        {
+          "id": "q3",
+          "ggufFile": "Wan2.2-TI2V-5B-Q3_K_S.gguf",
+          "sizeGb": 2.6,
+          "vramGb": 4,
+          "label": "Q3 (4GB)"
+        },
         {
           "id": "q4",
           "ggufFile": "Wan2.2-TI2V-5B-Q4_K_S.gguf",
@@ -33,44 +45,373 @@
       ]
     },
     {
-      "id": "wan-21-13b-video",
-      "name": "WAN 2.1 1.3B",
+      "id": "wan-22-a14b-t2v",
+      "name": "WAN 2.2 T2V A14B",
+      "mediaType": "video",
+      "schemaId": "wan-2.2",
+      "description": "High-quality text-to-video. Downloads HighNoise + LowNoise pair.",
+      "sizeGb": 16.0,
+      "vramGb": 12,
+      "minVramGb": 12,
+      "recommended": true,
+      "tags": [
+        "video",
+        "gguf",
+        "wan"
+      ],
+      "downloadType": "gguf_bundle_dual",
+      "ggufRepo": "QuantStack/Wan2.2-T2V-A14B-GGUF",
+      "ggufFiles": [
+        "HighNoise/Wan2.2-T2V-A14B-HighNoise-Q4_K_S.gguf",
+        "LowNoise/Wan2.2-T2V-A14B-LowNoise-Q4_K_S.gguf"
+      ],
+      "componentsRepo": "Wan-AI/Wan2.2-T2V-A14B-Diffusers",
+      "quantVariants": [
+        {
+          "id": "q3",
+          "ggufFiles": [
+            "HighNoise/Wan2.2-T2V-A14B-HighNoise-Q3_K_S.gguf",
+            "LowNoise/Wan2.2-T2V-A14B-LowNoise-Q3_K_S.gguf"
+          ],
+          "sizeGb": 12.0,
+          "vramGb": 10,
+          "label": "Q3 (10GB)"
+        },
+        {
+          "id": "q4",
+          "ggufFiles": [
+            "HighNoise/Wan2.2-T2V-A14B-HighNoise-Q4_K_S.gguf",
+            "LowNoise/Wan2.2-T2V-A14B-LowNoise-Q4_K_S.gguf"
+          ],
+          "sizeGb": 16.0,
+          "vramGb": 12,
+          "label": "Q4 (12GB)"
+        }
+      ]
+    },
+    {
+      "id": "wan-22-a14b-i2v",
+      "name": "WAN 2.2 I2V A14B",
+      "mediaType": "video",
+      "schemaId": "wan-2.2",
+      "description": "Image-to-video at 14B quality. HighNoise + LowNoise pair.",
+      "sizeGb": 16.0,
+      "vramGb": 12,
+      "minVramGb": 12,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan"
+      ],
+      "downloadType": "gguf_bundle_dual",
+      "ggufRepo": "QuantStack/Wan2.2-I2V-A14B-GGUF",
+      "ggufFiles": [
+        "HighNoise/Wan2.2-I2V-A14B-HighNoise-Q4_K_S.gguf",
+        "LowNoise/Wan2.2-I2V-A14B-LowNoise-Q4_K_S.gguf"
+      ],
+      "componentsRepo": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
+      "quantVariants": [
+        {
+          "id": "q4",
+          "ggufFiles": [
+            "HighNoise/Wan2.2-I2V-A14B-HighNoise-Q4_K_S.gguf",
+            "LowNoise/Wan2.2-I2V-A14B-LowNoise-Q4_K_S.gguf"
+          ],
+          "sizeGb": 16.0,
+          "vramGb": 12,
+          "label": "Q4 (12GB)"
+        }
+      ]
+    },
+    {
+      "id": "wan-22-s2v-a14b",
+      "name": "WAN 2.2 S2V A14B",
+      "mediaType": "video",
+      "schemaId": "wan-2.2",
+      "description": "Sound/sync-to-video variant (single GGUF).",
+      "sizeGb": 9.0,
+      "vramGb": 12,
+      "minVramGb": 12,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "QuantStack/Wan2.2-S2V-14B-GGUF",
+      "ggufFile": "Wan2.2-S2V-14B-Q4_K_S.gguf",
+      "componentsRepo": "Wan-AI/Wan2.2-T2V-A14B-Diffusers"
+    },
+    {
+      "id": "wan-22-vace-a14b",
+      "name": "WAN 2.2 VACE A14B",
+      "mediaType": "video",
+      "schemaId": "wan-2.2",
+      "description": "Video editing / VACE control model (14B).",
+      "sizeGb": 16.0,
+      "vramGb": 12,
+      "minVramGb": 12,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan"
+      ],
+      "downloadType": "gguf_bundle_dual",
+      "ggufRepo": "QuantStack/Wan2.2-VACE-Fun-A14B-GGUF",
+      "ggufFiles": [
+        "HighNoise/Wan2.2-VACE-Fun-A14B-high-noise-Q4_K_S.gguf",
+        "LowNoise/Wan2.2-VACE-Fun-A14B-low-noise-Q4_K_S.gguf"
+      ],
+      "componentsRepo": "Wan-AI/Wan2.2-T2V-A14B-Diffusers"
+    },
+    {
+      "id": "wan-22-animate-a14b",
+      "name": "WAN 2.2 Animate A14B",
+      "mediaType": "video",
+      "schemaId": "wan-2.2",
+      "description": "Character animation / pose-driven video.",
+      "sizeGb": 9.0,
+      "vramGb": 12,
+      "minVramGb": 12,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "QuantStack/Wan2.2-Animate-14B-GGUF",
+      "ggufFile": "Wan2.2-Animate-14B-Q4_K_S.gguf",
+      "componentsRepo": "Wan-AI/Wan2.2-T2V-A14B-Diffusers"
+    },
+    {
+      "id": "wan-21-t2v-1.3b",
+      "name": "WAN 2.1 T2V 1.3B",
       "mediaType": "video",
       "schemaId": "wan-2.1",
-      "description": "Lightweight text-to-video. Smaller download, good for testing.",
+      "description": "Lightweight diffusers text-to-video.",
       "sizeGb": 5.0,
       "vramGb": 6,
       "minVramGb": 6,
       "recommended": false,
-      "tags": ["video", "diffusers", "wan"],
+      "tags": [
+        "video",
+        "diffusers",
+        "wan"
+      ],
       "downloadType": "diffusers",
       "hfRepo": "Wan-AI/Wan2.1-T2V-1.3B"
+    },
+    {
+      "id": "wan-21-t2v-14b",
+      "name": "WAN 2.1 T2V 14B",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "Full 14B WAN 2.1 text-to-video (diffusers).",
+      "sizeGb": 28.0,
+      "vramGb": 16,
+      "minVramGb": 16,
+      "recommended": false,
+      "tags": [
+        "video",
+        "diffusers",
+        "wan"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "Wan-AI/Wan2.1-T2V-14B"
+    },
+    {
+      "id": "wan-21-i2v-14b-480p",
+      "name": "WAN 2.1 I2V 14B 480p",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "Image-to-video at 480p.",
+      "sizeGb": 28.0,
+      "vramGb": 16,
+      "minVramGb": 16,
+      "recommended": false,
+      "tags": [
+        "video",
+        "diffusers",
+        "wan",
+        "i2v"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "Wan-AI/Wan2.1-I2V-14B-480P"
+    },
+    {
+      "id": "wan-21-i2v-14b-720p",
+      "name": "WAN 2.1 I2V 14B 720p",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "Image-to-video at 720p.",
+      "sizeGb": 32.0,
+      "vramGb": 20,
+      "minVramGb": 20,
+      "recommended": false,
+      "tags": [
+        "video",
+        "diffusers",
+        "wan",
+        "i2v"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "Wan-AI/Wan2.1-I2V-14B-720P"
+    },
+    {
+      "id": "wan-21-t2v-14b-gguf",
+      "name": "WAN 2.1 T2V 14B GGUF",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "Quantized WAN 2.1 14B text-to-video.",
+      "sizeGb": 9.0,
+      "vramGb": 10,
+      "minVramGb": 10,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "city96/Wan2.1-T2V-14B-gguf",
+      "ggufFile": "wan2.1-t2v-14b-Q4_K_S.gguf",
+      "componentsRepo": "Wan-AI/Wan2.1-T2V-14B",
+      "quantVariants": [
+        {
+          "id": "q4",
+          "ggufFile": "wan2.1-t2v-14b-Q4_K_S.gguf",
+          "sizeGb": 9.0,
+          "vramGb": 10,
+          "label": "Q4 (10GB)"
+        },
+        {
+          "id": "q5",
+          "ggufFile": "wan2.1-t2v-14b-Q5_K_M.gguf",
+          "sizeGb": 11.0,
+          "vramGb": 12,
+          "label": "Q5 (12GB)"
+        }
+      ]
+    },
+    {
+      "id": "wan-21-i2v-480-gguf",
+      "name": "WAN 2.1 I2V 480p GGUF",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "GGUF image-to-video at 480p.",
+      "sizeGb": 9.0,
+      "vramGb": 10,
+      "minVramGb": 10,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan",
+        "i2v"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "city96/Wan2.1-I2V-14B-480P-gguf",
+      "ggufFile": "wan2.1-i2v-14b-480p-Q4_K_S.gguf",
+      "componentsRepo": "Wan-AI/Wan2.1-I2V-14B-480P"
+    },
+    {
+      "id": "wan-21-i2v-720-gguf",
+      "name": "WAN 2.1 I2V 720p GGUF",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "GGUF image-to-video at 720p.",
+      "sizeGb": 9.5,
+      "vramGb": 12,
+      "minVramGb": 12,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan",
+        "i2v"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "city96/Wan2.1-I2V-14B-720P-gguf",
+      "ggufFile": "wan2.1-i2v-14b-720p-Q4_K_S.gguf",
+      "componentsRepo": "Wan-AI/Wan2.1-I2V-14B-720P"
+    },
+    {
+      "id": "wan-21-flf2v-720-gguf",
+      "name": "WAN 2.1 FLF2V 720p GGUF",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "First-last-frame to video at 720p.",
+      "sizeGb": 9.5,
+      "vramGb": 12,
+      "minVramGb": 12,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "city96/Wan2.1-FLF2V-14B-720P-gguf",
+      "ggufFile": "wan2.1-flf2v-14b-720p-Q4_K_S.gguf",
+      "componentsRepo": "Wan-AI/Wan2.1-FLF2V-14B-720P"
     },
     {
       "id": "ltx-video-2b",
       "name": "LTX Video 2B",
       "mediaType": "video",
       "schemaId": "ltx-video-2",
-      "description": "Fast video generation from Lightricks.",
+      "description": "Lightricks LTX text-to-video (diffusers).",
       "sizeGb": 8.0,
       "vramGb": 10,
       "minVramGb": 10,
-      "recommended": false,
-      "tags": ["video", "diffusers"],
+      "recommended": true,
+      "tags": [
+        "video",
+        "diffusers",
+        "ltx"
+      ],
       "downloadType": "diffusers",
       "hfRepo": "Lightricks/LTX-Video"
+    },
+    {
+      "id": "ltx-video-gguf",
+      "name": "LTX Video 2B GGUF",
+      "mediaType": "video",
+      "schemaId": "ltx-video-2",
+      "description": "Quantized LTX video model.",
+      "sizeGb": 1.8,
+      "vramGb": 8,
+      "minVramGb": 8,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "ltx"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "pollockjj/ltx-video-2b-v0.9.1-gguf",
+      "ggufFile": "ltx-video-2b-v0.9.1-Q4_K_S.gguf",
+      "componentsRepo": "Lightricks/LTX-Video"
     },
     {
       "id": "flux-schnell-gguf",
       "name": "Flux Schnell",
       "mediaType": "image",
       "schemaId": "flux-schnell",
-      "description": "Fastest Flux images. Great for quick drafts.",
+      "description": "Fastest Flux images. Great for drafts.",
       "sizeGb": 6.5,
       "vramGb": 6,
       "minVramGb": 6,
       "recommended": true,
-      "tags": ["image", "gguf", "flux"],
+      "tags": [
+        "image",
+        "gguf",
+        "flux"
+      ],
       "downloadType": "gguf_bundle",
       "ggufRepo": "city96/FLUX.1-schnell-gguf",
       "ggufFile": "flux1-schnell-Q4_K_S.gguf",
@@ -97,12 +438,16 @@
       "name": "Flux Dev",
       "mediaType": "image",
       "schemaId": "flux-dev",
-      "description": "Higher quality Flux. Top tier open image model.",
+      "description": "Higher quality Flux development model.",
       "sizeGb": 6.8,
       "vramGb": 8,
       "minVramGb": 8,
       "recommended": true,
-      "tags": ["image", "gguf", "flux"],
+      "tags": [
+        "image",
+        "gguf",
+        "flux"
+      ],
       "downloadType": "gguf_bundle",
       "ggufRepo": "city96/FLUX.1-dev-gguf",
       "ggufFile": "flux1-dev-Q4_K_S.gguf",
@@ -125,16 +470,100 @@
       ]
     },
     {
+      "id": "flux-schnell-unsloth",
+      "name": "Flux Schnell (Unsloth)",
+      "mediaType": "image",
+      "schemaId": "flux-schnell",
+      "description": "Alternative Flux Schnell quantizations.",
+      "sizeGb": 6.5,
+      "vramGb": 6,
+      "minVramGb": 6,
+      "recommended": false,
+      "tags": [
+        "image",
+        "gguf",
+        "flux"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "unsloth/FLUX.1-schnell-GGUF",
+      "ggufFile": "flux1-schnell-Q4_K_S.gguf",
+      "componentsRepo": "black-forest-labs/FLUX.1-schnell"
+    },
+    {
+      "id": "flux-klein-4b",
+      "name": "Flux Klein 4B",
+      "mediaType": "image",
+      "schemaId": "flux-schnell",
+      "description": "Compact Flux 2 Klein 4B GGUF.",
+      "sizeGb": 3.2,
+      "vramGb": 6,
+      "minVramGb": 6,
+      "recommended": false,
+      "tags": [
+        "image",
+        "gguf",
+        "flux"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "unsloth/FLUX.2-klein-4B-GGUF",
+      "ggufFile": "flux-2-klein-4b-Q4_K_S.gguf",
+      "componentsRepo": "black-forest-labs/FLUX.1-schnell"
+    },
+    {
+      "id": "flux-klein-9b",
+      "name": "Flux Klein 9B",
+      "mediaType": "image",
+      "schemaId": "flux-dev",
+      "description": "Flux 2 Klein 9B GGUF.",
+      "sizeGb": 6.0,
+      "vramGb": 8,
+      "minVramGb": 8,
+      "recommended": false,
+      "tags": [
+        "image",
+        "gguf",
+        "flux"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "unsloth/FLUX.2-klein-9B-GGUF",
+      "ggufFile": "flux-2-klein-9b-Q4_K_S.gguf",
+      "componentsRepo": "black-forest-labs/FLUX.1-dev"
+    },
+    {
+      "id": "flux-fill-dev-gguf",
+      "name": "Flux Fill Dev",
+      "mediaType": "image",
+      "schemaId": "flux-dev",
+      "description": "Inpainting / fill Flux Dev GGUF.",
+      "sizeGb": 6.8,
+      "vramGb": 8,
+      "minVramGb": 8,
+      "recommended": false,
+      "tags": [
+        "image",
+        "gguf",
+        "flux"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "YarvixPA/FLUX.1-Fill-dev-GGUF",
+      "ggufFile": "flux1-fill-dev-Q4_0.gguf",
+      "componentsRepo": "black-forest-labs/FLUX.1-dev"
+    },
+    {
       "id": "sdxl-base-gguf",
       "name": "SDXL Base",
       "mediaType": "image",
       "schemaId": "sdxl-base",
-      "description": "Classic Stable Diffusion XL in GGUF format.",
+      "description": "Classic SDXL in GGUF format.",
       "sizeGb": 1.5,
       "vramGb": 6,
       "minVramGb": 6,
       "recommended": true,
-      "tags": ["image", "gguf", "sdxl"],
+      "tags": [
+        "image",
+        "gguf",
+        "sdxl"
+      ],
       "downloadType": "gguf_bundle",
       "ggufRepo": "HyperX-Sentience/SDXL-GGUF",
       "ggufFile": "sdxl_base_1.0_Q4_K_S.gguf",
@@ -157,16 +586,80 @@
       ]
     },
     {
+      "id": "sdxl-lightning-gguf",
+      "name": "SDXL Lightning",
+      "mediaType": "image",
+      "schemaId": "sdxl-base",
+      "description": "Few-step SDXL Lightning GGUF.",
+      "sizeGb": 1.6,
+      "vramGb": 6,
+      "minVramGb": 6,
+      "recommended": false,
+      "tags": [
+        "image",
+        "gguf",
+        "sdxl"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "mzwing/SDXL-Lightning-GGUF",
+      "ggufFile": "sdxl_lightning_2step.q4_0.gguf",
+      "componentsRepo": "stabilityai/stable-diffusion-xl-base-1.0"
+    },
+    {
+      "id": "sdxl-turbo-gguf",
+      "name": "SDXL Turbo GGUF",
+      "mediaType": "image",
+      "schemaId": "z-image-turbo",
+      "description": "Ultra-fast SDXL turbo in GGUF.",
+      "sizeGb": 3.5,
+      "vramGb": 6,
+      "minVramGb": 6,
+      "recommended": false,
+      "tags": [
+        "image",
+        "gguf",
+        "sdxl"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "OlegSkutte/sdxl-turbo-GGUF",
+      "ggufFile": "sd_xl_turbo_1.0.q8_0.gguf",
+      "componentsRepo": "stabilityai/sdxl-turbo"
+    },
+    {
+      "id": "sdxl-silveroxides-gguf",
+      "name": "SDXL (Silveroxides)",
+      "mediaType": "image",
+      "schemaId": "sdxl-base",
+      "description": "Community SDXL GGUF quantizations.",
+      "sizeGb": 1.5,
+      "vramGb": 6,
+      "minVramGb": 6,
+      "recommended": false,
+      "tags": [
+        "image",
+        "gguf",
+        "sdxl"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "silveroxides/sdxl-gguf",
+      "ggufFile": "NoobAI-XL-Epsilon-v1.1-unet-Q4_K_S.gguf",
+      "componentsRepo": "stabilityai/stable-diffusion-xl-base-1.0"
+    },
+    {
       "id": "sdxl-turbo",
       "name": "SDXL Turbo",
       "mediaType": "image",
       "schemaId": "z-image-turbo",
-      "description": "Ultra-fast SDXL turbo. Great for quick drafts.",
+      "description": "SDXL turbo diffusers (full folder).",
       "sizeGb": 7.0,
       "vramGb": 8,
       "minVramGb": 8,
       "recommended": false,
-      "tags": ["image", "diffusers", "sdxl"],
+      "tags": [
+        "image",
+        "diffusers",
+        "sdxl"
+      ],
       "downloadType": "diffusers",
       "hfRepo": "stabilityai/sdxl-turbo"
     },
@@ -175,14 +668,94 @@
       "name": "SDXL Base (full)",
       "mediaType": "image",
       "schemaId": "sdxl-base",
-      "description": "Full diffusers folder — best compatibility.",
+      "description": "Full SDXL diffusers \u2014 best compatibility.",
       "sizeGb": 7.0,
       "vramGb": 10,
       "minVramGb": 10,
       "recommended": false,
-      "tags": ["image", "diffusers", "sdxl"],
+      "tags": [
+        "image",
+        "diffusers",
+        "sdxl"
+      ],
       "downloadType": "diffusers",
       "hfRepo": "stabilityai/stable-diffusion-xl-base-1.0"
+    },
+    {
+      "id": "sd-1-5",
+      "name": "Stable Diffusion 1.5",
+      "mediaType": "image",
+      "schemaId": "sdxl-base",
+      "description": "Legacy SD 1.5 \u2014 huge ecosystem of LoRAs.",
+      "sizeGb": 4.0,
+      "vramGb": 4,
+      "minVramGb": 4,
+      "recommended": false,
+      "tags": [
+        "image",
+        "diffusers",
+        "sd"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "runwayml/stable-diffusion-v1-5"
+    },
+    {
+      "id": "sd-1-4",
+      "name": "Stable Diffusion 1.4",
+      "mediaType": "image",
+      "schemaId": "sdxl-base",
+      "description": "Original SD 1.4 base model.",
+      "sizeGb": 4.0,
+      "vramGb": 4,
+      "minVramGb": 4,
+      "recommended": false,
+      "tags": [
+        "image",
+        "diffusers",
+        "sd"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "CompVis/stable-diffusion-v1-4"
+    },
+    {
+      "id": "wan-21-fun-inp-gguf",
+      "name": "WAN 2.1 Fun InP GGUF",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "WAN Fun inpainting-to-video GGUF.",
+      "sizeGb": 9.0,
+      "vramGb": 10,
+      "minVramGb": 10,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "city96/Wan2.1-Fun-14B-InP-gguf",
+      "ggufFile": "wan2.1-fun-14b-inp-Q4_0.gguf",
+      "componentsRepo": "Wan-AI/Wan2.1-T2V-14B"
+    },
+    {
+      "id": "wan-21-fun-control-gguf",
+      "name": "WAN 2.1 Fun Control GGUF",
+      "mediaType": "video",
+      "schemaId": "wan-2.1",
+      "description": "Control-guided WAN 2.1 video GGUF.",
+      "sizeGb": 9.0,
+      "vramGb": 10,
+      "minVramGb": 10,
+      "recommended": false,
+      "tags": [
+        "video",
+        "gguf",
+        "wan"
+      ],
+      "downloadType": "gguf_bundle",
+      "ggufRepo": "city96/Wan2.1-Fun-14B-Control-gguf",
+      "ggufFile": "wan2.1-fun-14b-control-Q4_0.gguf",
+      "componentsRepo": "Wan-AI/Wan2.1-T2V-14B"
     }
   ]
 }

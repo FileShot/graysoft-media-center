@@ -41,6 +41,10 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
       - name: Install Linux dependencies
         if: matrix.os == 'ubuntu-22.04'
         run: |
@@ -56,6 +60,9 @@ jobs:
         run: npm ci
 
       - name: Build installers
+        env:
+          CI: true
+          PYO3_PYTHON: python3
         run: npm run tauri build -- --bundles ${{ matrix.bundles }}
 
       - name: Upload platform artifacts

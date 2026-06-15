@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graysoft Media Center — Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050505;
+      --gold: #d4a853;
+      --gold-bright: #f0c96e;
+      --text: #f5f5f5;
+      --muted: #8a8a8a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(212, 168, 83, 0.16), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 85% 60%, rgba(212, 168, 83, 0.07), transparent 50%),
+        radial-gradient(ellipse 50% 35% at 10% 80%, rgba(120, 90, 40, 0.06), transparent 45%);
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      opacity: 0.045;
+      pointer-events: none;
+      z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .preview-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(5, 5, 5, 0.78);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 12px;
+    }
+    .preview-banner span { color: var(--muted); }
+    .preview-banner strong { color: var(--gold-bright); font-weight: 600; }
+
+    /* ═══ HERO (v1 energy) ═══ */
+    .hero {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 72px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 168, 83, 0.28);
+      background: rgba(212, 168, 83, 0.07);
+      color: var(--gold-bright);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold-bright);
+      box-shadow: 0 0 14px var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.82); }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6.5vw, 4.8rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.04;
+      margin-bottom: 20px;
+      max-width: 920px;
+    }
+    h1 .gold {
+      background: linear-gradient(135deg, #f0c96e 0%, #d4a853 42%, #a67c2e 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero > p {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 52px;
+    }
+
+    .stage-wrap {
+      perspective: 1500px;
+      width: min(1120px, 94vw);
+      margin: 0 auto;
+    }
+
+    .stage {
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .glow-ring {
+      position: absolute;
+      inset: -10% -5%;
+      border-radius: 28px;
+      background: radial-gradient(ellipse at center, rgba(212, 168, 83, 0.28), transparent 62%);
+      filter: blur(48px);
+      transform: translateZ(-90px);
+      pointer-events: none;
+    }
+
+    .float-card {
+      position: absolute;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: rgba(12, 12, 12, 0.88);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 30px rgba(212, 168, 83, 0.06);
+      font-size: 12px;
+      white-space: nowrap;
+      pointer-events: none;
+      transform-style: preserve-3d;
+    }
+    .float-card strong {
+      display: block;
+      color: var(--gold-bright);
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    .float-card span { color: var(--muted); }
+    .fc-1 { top: 10%; left: -5%; transform: translateZ(130px) rotateY(14deg); }
+    .fc-2 { top: 52%; right: -7%; transform: translateZ(100px) rotateY(-12deg); }
+    .fc-3 { bottom: 6%; left: 3%; transform: translateZ(70px) rotateY(10deg); }
+
+    .window-frame {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: #0c0c0c;
+      box-shadow:
+        0 48px 120px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(212, 168, 83, 0.1),
+        0 0 100px rgba(212, 168, 83, 0.14);
+      transform: translateZ(50px);
+    }
+
+    .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: linear-gradient(180deg, #161616, #101010);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+    .titlebar-url {
+      flex: 1;
+      margin-left: 8px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.45);
+      font-size: 11px;
+      color: #666;
+      font-family: ui-monospace, monospace;
+      text-align: left;
+    }
+
+    .window-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .scroll-hint {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: #555;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      animation: bob 2.5s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(7px); }
+    }
+    .scroll-hint svg { opacity: 0.5; }
+
+    /* ═══ DEPTH DIVE — 3D on scroll, NOT a carousel ═══ */
+    .depth-section {
+      position: relative;
+      z-index: 2;
+      height: 300vh;
+      margin-top: 4vh;
+    }
+
+    .depth-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .depth-copy {
+      position: absolute;
+      top: 72px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 20;
+      pointer-events: none;
+      width: 90%;
+      max-width: 640px;
+    }
+    .depth-copy h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .depth-copy p {
+      color: var(--muted);
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s 0.1s, transform 0.4s 0.1s;
+    }
+    .depth-copy.visible h2,
+    .depth-copy.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .grid-floor {
+      position: absolute;
+      bottom: -18%;
+      left: 50%;
+      width: 220%;
+      height: 85%;
+      transform: translateX(-50%) rotateX(74deg);
+      transform-origin: center top;
+      background:
+        linear-gradient(rgba(212, 168, 83, 0.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 168, 83, 0.18) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 15%, transparent 72%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s;
+    }
+    .grid-floor.visible { opacity: 0.4; }
+
+    .depth-scene {
+      perspective: 1400px;
+      width: min(900px, 88vw);
+      height: min(560px, 58vh);
+      position: relative;
+    }
+
+    .depth-rig {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    /* Stacked depth layers — separate on scroll */
+    .depth-layer {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0a0a0a;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+      backface-visibility: hidden;
+    }
+    .depth-layer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    .depth-layer.back-2 {
+      filter: blur(3px) brightness(0.45);
+      border-color: rgba(212, 168, 83, 0.06);
+    }
+    .depth-layer.back-1 {
+      filter: blur(1px) brightness(0.72);
+      border-color: rgba(212, 168, 83, 0.1);
+    }
+    .depth-layer.front {
+      border-color: rgba(212, 168, 83, 0.22);
+      box-shadow:
+        0 50px 100px rgba(0, 0, 0, 0.65),
+        0 0 80px rgba(212, 168, 83, 0.12);
+    }
+
+  .depth-layer.front .layer-chrome {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      background: #121212;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 10px;
+      color: #555;
+      font-family: ui-monospace, monospace;
+    }
+
+    /* 3D feature markers — fixed in space, fade in as you scroll deeper */
+    .depth-marker {
+      position: absolute;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(10, 10, 10, 0.92);
+      border: 1px solid rgba(212, 168, 83, 0.2);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold-bright);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0;
+      transform-style: preserve-3d;
+      pointer-events: none;
+    }
+    .depth-marker small {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-top: 3px;
+    }
+    .dm-1 { top: 8%; left: -14%; }
+    .dm-2 { top: 38%; right: -16%; }
+    .dm-3 { bottom: 12%; left: -10%; }
+    .dm-4 { bottom: 22%; right: -12%; }
+
+    .depth-progress {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 30;
+    }
+    .depth-dot {
+      width: 32px;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .depth-dot span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: var(--gold-bright);
+      border-radius: 2px;
+      transition: width 0.15s linear;
+    }
+
+    /* ═══ Features ═══ */
+    .features {
+      position: relative;
+      z-index: 2;
+      padding: 100px 24px 140px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .features .sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 52px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.02);
+      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+    }
+    .feature-card:hover {
+      border-color: rgba(212, 168, 83, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 40px rgba(212,168,83,0.06);
+    }
+    .feature-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--gold-bright);
+    }
+    .feature-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .cta-block {
+      margin-top: 56px;
+      text-align: center;
+    }
+    .cta-block a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f0c96e, #d4a853);
+      color: #0a0a0a;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(212, 168, 83, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-block a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 48px rgba(212, 168, 83, 0.45);
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient"></div>
+  <div class="grain"></div>
+
+  <div class="preview-banner">
+    <div><strong>v1 energy</strong> <span>— 3D depth dive instead of carousel</span></div>
+    <span>Mouse over hero · scroll to peel layers</span>
+  </div>
+
+  <!-- ═══ HERO — same punch as v1 ═══ -->
+  <section class="hero" id="hero">
+    <div class="eyebrow">GraySoft Desktop · Windows</div>
+    <h1>Local AI video &amp; image,<br /><span class="gold">in one studio.</span></h1>
+    <p>
+      Graysoft Media Center runs WAN, Flux, SDXL, and LTX on your NVIDIA GPU —
+      private, offline-capable, built for creators who want control.
+    </p>
+
+    <div class="stage-wrap" id="stageWrap">
+      <div class="stage" id="stage">
+        <div class="glow-ring"></div>
+        <div class="float-card fc-1">
+          <strong>WAN 2.2 Video</strong>
+          <span>Text &amp; image-to-video</span>
+        </div>
+        <div class="float-card fc-2">
+          <strong>4GB GPU ready</strong>
+          <span>Fast preset · 33 frames</span>
+        </div>
+        <div class="float-card fc-3">
+          <strong>100% local</strong>
+          <span>Models stay on your disk</span>
+        </div>
+        <div class="window-frame">
+          <div class="titlebar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+            <div class="titlebar-url">Graysoft Media Center</div>
+          </div>
+          <img src="assets/media-center-screenshot.png" alt="Graysoft Media Center" width="1280" height="820" />
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll — layers peel apart in 3D</span>
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4v12M5 11l5 5 5-5"/></svg>
+    </div>
+  </section>
+
+  <!-- ═══ DEPTH DIVE — scroll-scrubbed 3D, not a carousel ═══ -->
+  <section class="depth-section" id="depthSection">
+    <div class="depth-sticky">
+      <div class="depth-copy" id="depthCopy">
+        <h2>Peel into the workspace</h2>
+        <p>Scroll pulls the UI apart in depth — same screenshot, exploded in Z-space</p>
+      </div>
+
+      <div class="grid-floor" id="gridFloor"></div>
+
+      <div class="depth-scene">
+        <div class="depth-rig" id="depthRig">
+          <div class="depth-layer back-2" id="layerBack2">
+            <img src="assets/media-center-screenshot.png" alt="" />
+          </div>
+          <div class="depth-layer back-1" id="layerBack1">
+            <img src="assets/media-center-screenshot.png" alt="" />
+          </div>
+          <div class="depth-layer front" id="layerFront">
+            <div class="layer-chrome">Graysoft Media Center — workspace</div>
+            <img src="assets/media-center-screenshot.png" alt="Workspace depth view" />
+          </div>
+
+          <div class="depth-marker dm-1" id="dm1">Gallery<small>Recent videos &amp; compare</small></div>
+          <div class="depth-marker dm-2" id="dm2">Generate<small>WAN · Flux · SDXL · LTX</small></div>
+          <div class="depth-marker dm-3" id="dm3">Models<small>GGUF &amp; catalog downloads</small></div>
+          <div class="depth-marker dm-4" id="dm4">Local GPU<small>Zero cloud inference</small></div>
+        </div>
+      </div>
+
+      <div class="depth-progress">
+        <div class="depth-dot"><span id="dot1"></span></div>
+        <div class="depth-dot"><span id="dot2"></span></div>
+        <div class="depth-dot"><span id="dot3"></span></div>
+        <div class="depth-dot"><span id="dot4"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Built for real hardware</h2>
+    <p class="sub">Everything runs on your machine. No API keys required for local models.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Video-first pipelines</h3>
+        <p>WAN 2.2 with presets tuned for 4GB GPUs — Fast, Balanced, and Quality modes with honest time estimates.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Unified gallery</h3>
+        <p>Collections, compare view, auto thumbnails, and regenerate — your outputs stay organized in one place.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Model catalog</h3>
+        <p>Registry-driven downloads for GGUF and diffusers models. One catalog, one dispatch layer.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Windows native</h3>
+        <p>Tauri desktop app with NSIS installer. CUDA inference, private by default.</p>
+      </div>
+    </div>
+    <div class="cta-block">
+      <a href="https://github.com/FileShot/graysoft-media-center/releases/latest" target="_blank" rel="noopener">
+        Download Graysoft Media Center
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // ── Hero mouse tilt (v1) ──
+    const stage = document.getElementById('stage');
+    const stageWrap = document.getElementById('stageWrap');
+    let tiltX = 0, tiltY = 0, targetX = 0, targetY = 0;
+
+    stageWrap.addEventListener('mousemove', (e) => {
+      const rect = stageWrap.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      targetY = x * 16;
+      targetX = -y * 12;
+    });
+    stageWrap.addEventListener('mouseleave', () => { targetX = 0; targetY = 0; });
+
+    function animateTilt() {
+      tiltX += (targetX - tiltX) * 0.08;
+      tiltY += (targetY - tiltY) * 0.08;
+      stage.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      requestAnimationFrame(animateTilt);
+    }
+    animateTilt();
+
+    // Hero parallax on scroll (v1)
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight * 1.2) {
+        stage.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(${y * 0.12}px) scale(${Math.max(0.88, 1 - y * 0.00025)})`;
+      }
+    }, { passive: true });
+
+    // ── Depth dive scroll scrub ──
+    const depthSection = document.getElementById('depthSection');
+    const depthRig = document.getElementById('depthRig');
+    const layerBack2 = document.getElementById('layerBack2');
+    const layerBack1 = document.getElementById('layerBack1');
+    const layerFront = document.getElementById('layerFront');
+    const depthCopy = document.getElementById('depthCopy');
+    const gridFloor = document.getElementById('gridFloor');
+    const markers = [
+      document.getElementById('dm1'),
+      document.getElementById('dm2'),
+      document.getElementById('dm3'),
+      document.getElementById('dm4'),
+    ];
+    const dots = [
+      document.getElementById('dot1'),
+      document.getElementById('dot2'),
+      document.getElementById('dot3'),
+      document.getElementById('dot4'),
+    ];
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
+    function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+    function onDepthScroll() {
+      const rect = depthSection.getBoundingClientRect();
+      const total = depthSection.offsetHeight - window.innerHeight;
+      const scrolled = clamp(-rect.top, 0, total);
+      const p = total > 0 ? scrolled / total : 0;
+      const e = ease(p);
+
+      // Whole rig: start tilted, flatten and zoom as you scroll
+      const rigRotX = lerp(28, -4, e);
+      const rigRotY = lerp(-8, 6, e);
+      const rigScale = lerp(0.82, 1.05, e);
+      const rigZ = lerp(-120, 80, e);
+      depthRig.style.transform = `translateZ(${rigZ}px) rotateX(${rigRotX}deg) rotateY(${rigRotY}deg) scale(${rigScale})`;
+
+      // Layers peel apart in Z
+      const z2 = lerp(-20, -180, e);
+      const z1 = lerp(-10, -90, e);
+      const z0 = lerp(0, 40, e);
+      const spread2 = lerp(0, 1, e);
+      const spread1 = lerp(0, 0.5, e);
+
+      layerBack2.style.transform = `translateZ(${z2}px) translateX(${-spread2 * 24}px) translateY(${spread2 * 12}px) rotateY(${spread2 * 4}deg)`;
+      layerBack1.style.transform = `translateZ(${z1}px) translateX(${spread1 * 14}px) translateY(${-spread1 * 8}px) rotateY(${-spread1 * 3}deg)`;
+      layerFront.style.transform = `translateZ(${z0}px)`;
+
+      // Markers pop in at different scroll thresholds
+      markers.forEach((m, i) => {
+        const threshold = 0.15 + i * 0.2;
+        const local = clamp((p - threshold) / 0.18, 0, 1);
+        const angle = (i - 1.5) * 18;
+        const dist = lerp(0, 1, local);
+        m.style.opacity = local;
+        m.style.transform = `translateZ(${lerp(20, 160, dist)}px) rotateY(${angle}deg) scale(${lerp(0.85, 1, local)})`;
+      });
+
+      // Progress dots
+      dots.forEach((d, i) => {
+        const segStart = i * 0.25;
+        const seg = clamp((p - segStart) / 0.25, 0, 1);
+        d.style.width = `${seg * 100}%`;
+      });
+
+      if (p > 0.05) {
+        depthCopy.classList.add('visible');
+        gridFloor.classList.add('visible');
+      }
+    }
+
+    window.addEventListener('scroll', onDepthScroll, { passive: true });
+    onDepthScroll();
+  </script>
+</body>
+</html>

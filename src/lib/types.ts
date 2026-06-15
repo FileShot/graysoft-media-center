@@ -27,7 +27,8 @@ export interface ModelInfo {
 
 export interface QuantVariant {
   id: string;
-  ggufFile: string;
+  ggufFile?: string;
+  ggufFiles?: string[];
   sizeGb: number;
   vramGb: number;
   label: string;
@@ -48,6 +49,7 @@ export interface CatalogEntry {
   quantVariants?: QuantVariant[];
   ggufRepo?: string;
   ggufFile?: string;
+  ggufFiles?: string[];
   componentsRepo?: string;
   hfRepo?: string;
 }

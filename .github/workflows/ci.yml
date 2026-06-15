@@ -32,6 +32,9 @@ jobs:
       - name: Python smoke test
         run: python scripts/smoke_test.py
 
+      - name: Vet model catalog links
+        run: python scripts/vet_model_catalog.py
+
       - name: Cargo build release
         working-directory: src-tauri
         run: cargo build --release
