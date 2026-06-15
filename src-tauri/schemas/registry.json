@@ -87,6 +87,50 @@
       "pipelineModule": "ltx_video_2",
       "minVramGb": 10,
       "capabilities": ["text2video"]
+    },
+    {
+      "id": "hunyuan-video",
+      "name": "Hunyuan Video",
+      "type": "video",
+      "description": "Tencent Hunyuan text-to-video",
+      "hfRepo": "tencent/HunyuanVideo",
+      "schema": "hunyuan-video.json",
+      "pipelineModule": "hunyuan_video",
+      "minVramGb": 24,
+      "capabilities": ["text2video"]
+    },
+    {
+      "id": "stable-video-diffusion",
+      "name": "Stable Video Diffusion",
+      "type": "video",
+      "description": "Stability AI image-to-video (SVD XT)",
+      "hfRepo": "stabilityai/stable-video-diffusion-img2vid-xt",
+      "schema": "stable-video-diffusion.json",
+      "pipelineModule": "stable_video_diffusion",
+      "minVramGb": 12,
+      "capabilities": ["image2video"]
+    },
+    {
+      "id": "cogvideox",
+      "name": "CogVideoX",
+      "type": "video",
+      "description": "THUDM CogVideoX text-to-video",
+      "hfRepo": "THUDM/CogVideoX-2b",
+      "schema": "cogvideox.json",
+      "pipelineModule": "cogvideox",
+      "minVramGb": 16,
+      "capabilities": ["text2video"]
+    },
+    {
+      "id": "sd-1-5",
+      "name": "Stable Diffusion 1.5",
+      "type": "image",
+      "description": "Classic SD 1.5 text and image-to-image",
+      "hfRepo": "runwayml/stable-diffusion-v1-5",
+      "schema": "sd-1-5.json",
+      "pipelineModule": "sd_1_5",
+      "minVramGb": 4,
+      "capabilities": ["text2img", "img2img"]
     }
   ]
 }

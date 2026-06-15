@@ -1,0 +1,113 @@
+{
+  "id": "hunyuan-video",
+  "name": "Hunyuan Video",
+  "mediaType": "video",
+  "groups": [
+    {
+      "id": "prompt",
+      "label": "Prompt",
+      "fields": [
+        {
+          "id": "prompt",
+          "label": "Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "input": "prompt" }]
+        },
+        {
+          "id": "negative_prompt",
+          "label": "Negative Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "input": "negative_prompt" }]
+        }
+      ]
+    },
+    {
+      "id": "dimensions",
+      "label": "Dimensions",
+      "fields": [
+        {
+          "id": "width",
+          "label": "Width",
+          "type": "number",
+          "default": 848,
+          "min": 640,
+          "max": 1280,
+          "step": 16,
+          "bindings": [{ "input": "width", "transform": "int" }]
+        },
+        {
+          "id": "height",
+          "label": "Height",
+          "type": "number",
+          "default": 480,
+          "min": 480,
+          "max": 720,
+          "step": 16,
+          "bindings": [{ "input": "height", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "label": "Video",
+      "fields": [
+        {
+          "id": "fps",
+          "label": "FPS",
+          "type": "select",
+          "default": 24,
+          "options": [
+            { "label": "24 fps", "value": 24 },
+            { "label": "16 fps", "value": 16 }
+          ],
+          "bindings": [{ "input": "fps", "transform": "int" }]
+        },
+        {
+          "id": "num_frames",
+          "label": "Frame Count",
+          "type": "number",
+          "default": 49,
+          "min": 17,
+          "max": 129,
+          "step": 4,
+          "bindings": [{ "input": "num_frames", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality",
+      "fields": [
+        {
+          "id": "steps",
+          "label": "Steps",
+          "type": "slider",
+          "default": 30,
+          "min": 10,
+          "max": 50,
+          "step": 1,
+          "bindings": [{ "input": "steps", "transform": "int" }]
+        },
+        {
+          "id": "cfg",
+          "label": "CFG Scale",
+          "type": "slider",
+          "default": 6.0,
+          "min": 1.0,
+          "max": 12.0,
+          "step": 0.5,
+          "bindings": [{ "input": "cfg" }]
+        },
+        {
+          "id": "seed",
+          "label": "Seed",
+          "type": "seed",
+          "default": -1,
+          "bindings": [{ "input": "seed", "transform": "seed" }]
+        }
+      ]
+    }
+  ]
+}

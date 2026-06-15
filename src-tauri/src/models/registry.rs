@@ -99,6 +99,10 @@ pub fn load_schema_by_id(schema_id: &str) -> Result<ModelSchema, String> {
         "wan-2.2.json" => include_str!("../../schemas/wan-2.2.json"),
         "wan-2.1.json" => include_str!("../../schemas/wan-2.1.json"),
         "ltx-video-2.json" => include_str!("../../schemas/ltx-video-2.json"),
+        "hunyuan-video.json" => include_str!("../../schemas/hunyuan-video.json"),
+        "stable-video-diffusion.json" => include_str!("../../schemas/stable-video-diffusion.json"),
+        "cogvideox.json" => include_str!("../../schemas/cogvideox.json"),
+        "sd-1-5.json" => include_str!("../../schemas/sd-1-5.json"),
         other => return Err(format!("Unknown schema file: {other}")),
     };
 
@@ -125,7 +129,7 @@ mod tests {
     #[test]
     fn registry_loads_all_models() {
         let registry = load_registry().expect("registry should parse");
-        assert!(registry.models.len() >= 8);
+        assert!(registry.models.len() >= 12);
         let ids: Vec<_> = registry.models.iter().map(|m| m.id.as_str()).collect();
         assert!(ids.contains(&"wan-2.2-5b"));
         assert!(ids.contains(&"flux-schnell"));

@@ -83,8 +83,17 @@ jobs:
           pattern: release-*
           merge-multiple: true
 
-      - name: List release files
-        run: find dist -type f | sort
+      - name: Collect installers only
+        shell: bash
+        run: |
+          mkdir -p installers
+          find dist -type f \( -name '*-setup.exe' -o -name '*.dmg' -o -name '*.AppImage' -o -name '*.deb' \) -exec cp {} installers/ \;
+          if [ -z "$(ls -A installers)" ]; then
+            echo "No installer artifacts found:"
+            find dist -type f | sort | head -100
+            exit 1
+          fi
+          ls -la installers/
 
       - name: Resolve release tag
         id: tag
@@ -104,6 +113,6 @@ jobs:
           generate_release_notes: true
           prerelease: false
           make_latest: true
-          files: dist/**/*
+          files: installers/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

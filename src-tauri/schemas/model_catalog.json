@@ -398,6 +398,116 @@
       "componentsRepo": "Lightricks/LTX-Video"
     },
     {
+      "id": "hunyuan-video",
+      "name": "Hunyuan Video",
+      "mediaType": "video",
+      "schemaId": "hunyuan-video",
+      "description": "Tencent Hunyuan text-to-video (diffusers).",
+      "sizeGb": 24.0,
+      "vramGb": 24,
+      "minVramGb": 24,
+      "recommended": true,
+      "tags": [
+        "video",
+        "diffusers",
+        "hunyuan"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "tencent/HunyuanVideo"
+    },
+    {
+      "id": "svd-xt",
+      "name": "Stable Video Diffusion XT",
+      "mediaType": "video",
+      "schemaId": "stable-video-diffusion",
+      "description": "Image-to-video at 1024\u00d7576. Requires a source image.",
+      "sizeGb": 8.0,
+      "vramGb": 12,
+      "minVramGb": 12,
+      "recommended": true,
+      "tags": [
+        "video",
+        "diffusers",
+        "svd",
+        "i2v"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "stabilityai/stable-video-diffusion-img2vid-xt"
+    },
+    {
+      "id": "svd-xt-1-1",
+      "name": "Stable Video Diffusion XT 1.1",
+      "mediaType": "video",
+      "schemaId": "stable-video-diffusion",
+      "description": "Updated SVD XT with improved motion.",
+      "sizeGb": 8.0,
+      "vramGb": 12,
+      "minVramGb": 12,
+      "recommended": false,
+      "tags": [
+        "video",
+        "diffusers",
+        "svd",
+        "i2v"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "stabilityai/stable-video-diffusion-img2vid-xt-1-1"
+    },
+    {
+      "id": "cogvideox-2b",
+      "name": "CogVideoX 2B",
+      "mediaType": "video",
+      "schemaId": "cogvideox",
+      "description": "Lightweight CogVideoX text-to-video.",
+      "sizeGb": 10.0,
+      "vramGb": 16,
+      "minVramGb": 16,
+      "recommended": true,
+      "tags": [
+        "video",
+        "diffusers",
+        "cogvideox"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "THUDM/CogVideoX-2b"
+    },
+    {
+      "id": "cogvideox-5b",
+      "name": "CogVideoX 5B",
+      "mediaType": "video",
+      "schemaId": "cogvideox",
+      "description": "Higher quality CogVideoX 5B.",
+      "sizeGb": 20.0,
+      "vramGb": 20,
+      "minVramGb": 20,
+      "recommended": false,
+      "tags": [
+        "video",
+        "diffusers",
+        "cogvideox"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "THUDM/CogVideoX-5b"
+    },
+    {
+      "id": "cogvideox-1-5-5b",
+      "name": "CogVideoX 1.5 5B",
+      "mediaType": "video",
+      "schemaId": "cogvideox",
+      "description": "CogVideoX 1.5 with longer clips.",
+      "sizeGb": 22.0,
+      "vramGb": 24,
+      "minVramGb": 24,
+      "recommended": false,
+      "tags": [
+        "video",
+        "diffusers",
+        "cogvideox"
+      ],
+      "downloadType": "diffusers",
+      "hfRepo": "THUDM/CogVideoX1.5-5B"
+    },
+    {
       "id": "flux-schnell-gguf",
       "name": "Flux Schnell",
       "mediaType": "image",
@@ -685,7 +795,7 @@
       "id": "sd-1-5",
       "name": "Stable Diffusion 1.5",
       "mediaType": "image",
-      "schemaId": "sdxl-base",
+      "schemaId": "sd-1-5",
       "description": "Legacy SD 1.5 \u2014 huge ecosystem of LoRAs.",
       "sizeGb": 4.0,
       "vramGb": 4,
@@ -703,7 +813,7 @@
       "id": "sd-1-4",
       "name": "Stable Diffusion 1.4",
       "mediaType": "image",
-      "schemaId": "sdxl-base",
+      "schemaId": "sd-1-5",
       "description": "Original SD 1.4 base model.",
       "sizeGb": 4.0,
       "vramGb": 4,

@@ -1,0 +1,109 @@
+{
+  "id": "sd-1-5",
+  "name": "Stable Diffusion 1.5",
+  "mediaType": "image",
+  "groups": [
+    {
+      "id": "prompt",
+      "label": "Prompt",
+      "fields": [
+        {
+          "id": "prompt",
+          "label": "Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "input": "prompt" }]
+        },
+        {
+          "id": "negative_prompt",
+          "label": "Negative Prompt",
+          "type": "text",
+          "default": "",
+          "bindings": [{ "input": "negative_prompt" }]
+        }
+      ]
+    },
+    {
+      "id": "dimensions",
+      "label": "Dimensions",
+      "fields": [
+        {
+          "id": "width",
+          "label": "Width",
+          "type": "number",
+          "default": 512,
+          "min": 384,
+          "max": 768,
+          "step": 64,
+          "bindings": [{ "input": "width", "transform": "int" }]
+        },
+        {
+          "id": "height",
+          "label": "Height",
+          "type": "number",
+          "default": 512,
+          "min": 384,
+          "max": 768,
+          "step": 64,
+          "bindings": [{ "input": "height", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "img2img",
+      "label": "Image-to-Image",
+      "fields": [
+        {
+          "id": "init_image",
+          "label": "Source Image",
+          "type": "file",
+          "default": "",
+          "bindings": [{ "input": "init_image" }]
+        },
+        {
+          "id": "strength",
+          "label": "Strength",
+          "type": "slider",
+          "default": 0.75,
+          "min": 0.1,
+          "max": 1.0,
+          "step": 0.05,
+          "bindings": [{ "input": "strength" }]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality",
+      "fields": [
+        {
+          "id": "steps",
+          "label": "Steps",
+          "type": "slider",
+          "default": 25,
+          "min": 10,
+          "max": 50,
+          "step": 1,
+          "bindings": [{ "input": "steps", "transform": "int" }]
+        },
+        {
+          "id": "cfg",
+          "label": "CFG Scale",
+          "type": "slider",
+          "default": 7.5,
+          "min": 1.0,
+          "max": 15.0,
+          "step": 0.5,
+          "bindings": [{ "input": "cfg" }]
+        },
+        {
+          "id": "seed",
+          "label": "Seed",
+          "type": "seed",
+          "default": -1,
+          "bindings": [{ "input": "seed", "transform": "seed" }]
+        }
+      ]
+    }
+  ]
+}

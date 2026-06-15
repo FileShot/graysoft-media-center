@@ -1,6 +1,6 @@
 [package]
 name = "graysoft-media-center"
-version = "0.1.0"
+version = "0.1.2"
 description = "Graysoft Media Center - AI media generation interface"
 authors = ["Graysoft"]
 edition = "2021"

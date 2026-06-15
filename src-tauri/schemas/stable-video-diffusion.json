@@ -1,0 +1,116 @@
+{
+  "id": "stable-video-diffusion",
+  "name": "Stable Video Diffusion",
+  "mediaType": "video",
+  "groups": [
+    {
+      "id": "source",
+      "label": "Source Image",
+      "fields": [
+        {
+          "id": "reference_image",
+          "label": "Source Image",
+          "type": "file",
+          "default": "",
+          "bindings": [{ "input": "reference_image" }]
+        }
+      ]
+    },
+    {
+      "id": "dimensions",
+      "label": "Dimensions",
+      "fields": [
+        {
+          "id": "width",
+          "label": "Width",
+          "type": "number",
+          "default": 1024,
+          "min": 576,
+          "max": 1024,
+          "step": 64,
+          "bindings": [{ "input": "width", "transform": "int" }]
+        },
+        {
+          "id": "height",
+          "label": "Height",
+          "type": "number",
+          "default": 576,
+          "min": 320,
+          "max": 576,
+          "step": 64,
+          "bindings": [{ "input": "height", "transform": "int" }]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "label": "Video",
+      "fields": [
+        {
+          "id": "fps",
+          "label": "FPS",
+          "type": "select",
+          "default": 7,
+          "options": [
+            { "label": "7 fps", "value": 7 },
+            { "label": "14 fps", "value": 14 }
+          ],
+          "bindings": [{ "input": "fps", "transform": "int" }]
+        },
+        {
+          "id": "num_frames",
+          "label": "Frame Count",
+          "type": "number",
+          "default": 25,
+          "min": 14,
+          "max": 25,
+          "step": 1,
+          "bindings": [{ "input": "num_frames", "transform": "int" }]
+        },
+        {
+          "id": "motion_bucket_id",
+          "label": "Motion Amount",
+          "type": "slider",
+          "default": 127,
+          "min": 1,
+          "max": 255,
+          "step": 1,
+          "bindings": [{ "input": "motion_bucket_id", "transform": "int" }]
+        },
+        {
+          "id": "noise_aug_strength",
+          "label": "Noise Augmentation",
+          "type": "slider",
+          "default": 0.02,
+          "min": 0.0,
+          "max": 0.1,
+          "step": 0.01,
+          "bindings": [{ "input": "noise_aug_strength" }]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality",
+      "fields": [
+        {
+          "id": "steps",
+          "label": "Steps",
+          "type": "slider",
+          "default": 25,
+          "min": 10,
+          "max": 50,
+          "step": 1,
+          "bindings": [{ "input": "steps", "transform": "int" }]
+        },
+        {
+          "id": "seed",
+          "label": "Seed",
+          "type": "seed",
+          "default": -1,
+          "bindings": [{ "input": "seed", "transform": "seed" }]
+        }
+      ]
+    }
+  ]
+}
