@@ -31,3 +31,7 @@ app-icon.svg
 
 # Cursor / local
 .cursor/
+
+_site-audit/
+marketing/
+
